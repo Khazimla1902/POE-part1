@@ -3,7 +3,7 @@
  */
 
 package com.mycompany.poepart1;
-
+import java.util.Scanner;
 /**
  *
  * @author RC_Student_lab
@@ -11,6 +11,13 @@ package com.mycompany.poepart1;
 public class PoePart1 {
 
     public static void main(String[] args) {
+        //Declarations
+        String Username, fistName, lastName;
+        Scanner sc= new Scanner(System.in);
+        //prompt the user
+        
+        
+        
         
     }
 }
