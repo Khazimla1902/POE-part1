@@ -5,12 +5,18 @@ package com.mycompany.poepart1;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 import java.util.regex.Pattern;
+
 /**
  *
  * @author RC_Student_lab
  */
 public class login {
     
+    
+    
+    
+        
+        
     
     
     
@@ -46,15 +52,16 @@ public class login {
         return check;
     }
     
-    public String registerUser(){
+    public void registerUser(){
         String Username="Asa_";
         String Password="@Kozangawe1";
         
-        if(Username.equals("Asa_")&& Password.equals("@Kozangawe1")){
-            System.out.print("Welcome it is great to see you again");
+        if(Username.equals("Asa_")&& Password.equals("@Kozangawe1")){                 
+       System.out.print("Welcome it is great to see you again");
         }
         else{
             System.out.print("Username or password incorrect, please try again");
         }
+        
     }
 }
