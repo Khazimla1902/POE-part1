@@ -20,7 +20,7 @@ public class login {
        
        
        
-       if(!pass.matches(regex)){
+       if(pass.matches(regex)){
            System.out.println("Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a numberand a special character");
            check=false;
        }
@@ -44,5 +44,17 @@ public class login {
            
         }
         return check;
+    }
+    
+    public String registerUser(){
+        String Username="Asa_";
+        String Password="@Kozangawe1";
+        
+        if(Username.equals("Asa_")&& Password.equals("@Kozangawe1")){
+            System.out.print("Welcome it is great to see you again");
+        }
+        else{
+            System.out.print("Username or password incorrect, please try again");
+        }
     }
 }
