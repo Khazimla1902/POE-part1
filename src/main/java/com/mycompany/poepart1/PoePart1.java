@@ -24,11 +24,14 @@ public class PoePart1 {
         System.out.print("Please Enter Username: ");
         Username=sc.next();
         }while(second.Username(Username));
+        
         System.out.print("Please enter First Name: ");
         firstName=sc.next();
         
         System.out.print("Please enter Last Name: ");
         lastName=sc.next();
+       
+        
         
         do{
        System.out.print("Please enter Password: ");
@@ -38,6 +41,8 @@ public class PoePart1 {
         //calling my class
          second.Username(Username);
          second.checkPassword(Password);
+         second.registerUser();
+         
          
         
         
