@@ -13,27 +13,49 @@ public class PoePart1 {
 
     public static void main(String[] args) {
     
-    Scanner sc = new Scanner (System.in);
-        login user = new login();
+    
         
-        // Set user details
-        user.Username = "john_";
-        user.pass = "P@ssw0rd";
-        user.firstName = "John";
-        user.lastName = "Doe";
+        
+        login second = new login();
+        Scanner scanner = new Scanner(System.in);
+        
+        // Prompt for user details
+        System.out.print("Please Create username: ");
+        second.Username = scanner.nextLine();
 
-        // Attempt to register the user
-        String registrationResult = user.registerUser();
+        System.out.print("Please Create password: ");
+        second.pass = scanner.nextLine();
+
+        System.out.print("PLease Enter first name: ");
+        second.firstName = scanner.nextLine();
+
+        System.out.print("Please Enter last name: ");
+        second.lastName = scanner.nextLine();
+
+        // register the user
+        String registrationResult = second.registerUser();
         System.out.println("Registration result: " + registrationResult);
 
-        // Attempt to login
-        boolean loginSuccess = user.loginUser("john_", "P@ssw0rd");
-        String loginStatus = user.returnLoginStatus("john_", "P@ssw0rd");
-        System.out.println("Login success: " + loginSuccess);
-        System.out.println("Login status: " + loginStatus);
+        // If registration is successful, attempt to login
+        if (registrationResult.equals("Username and password successfully registered")) {
+            System.out.print("Enter username to login: ");
+            String loginUsername = scanner.nextLine();
+
+            System.out.print("Enter password to login: ");
+            String loginPassword = scanner.nextLine();
+
+            boolean loginSuccess = second.loginUser(loginUsername, loginPassword);
+            String loginStatus = second.returnLoginStatus(loginUsername, loginPassword);
+            System.out.println("Login success: " + loginSuccess);
+            System.out.println("Login status: " + loginStatus);
+        }
+
+        scanner.close();
     }
+}
+    
         
-    }
+    
     
                  
         
