@@ -13,71 +13,35 @@ import java.util.Scanner;
 public class login {
     
     
+    String Username;
+    String pass;
+    String firstName;
+    String lastName;
+    String regex="=\"^(?=.*[A-Z])(?=.*[a-z])(?=.*\\\\d)(?=.*[@$!%*#?&]).{8,}$";
     
+    public boolean checkUserName(){
+        return Username.contains("_")&& Username.length()<=5;
+    }
+    public boolean checkPasswordComplexity(){
+        return pass.matches(regex);
+        
+    }
+     public String registerUser()  {
+         if(!checkUserName()){
+           return "Username is not correctly formatted, please ensure that your username contains an underscore is no more 5 characters in length";  
+         }
+         if(!checkPasswordComplexity()){
+             return "Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a numberand a special character";
+         }
+         return "Username successfully registered";
+         
+     }    
     
         
         
     
     
-    
-    public boolean checkPassword(String pass){
-        String regex="^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*#?&]).{8,}$";
-       boolean check=false; 
-       
-       
-       
-       if(pass.matches(regex)){
-           System.out.println("Password succesfully captured");
-           
-       }
-        else{
-           System.out.println("Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a numberand a special character");
-           
-           
-       }
-        
-        return check;
-        
-        
-    } 
-    public boolean Username(String user){
-        boolean check=false;
    
-        
-       
-        
-        if(user.contains("_")&& user.length()<=5){
-          
-            System.out.println("Username Successfully caputured");
-           
-        }
-        else{
-            System.out.println("Username is not correctly formatted please ensure your username contains an underscore and is no more that 5 characters in length");
-            
-           
-        }
-        return check;
-    }
-    
-    public boolean loginUser( String login, String loginPass, String loginUser){
-        
-        boolean check = false;
-        String text1="Welcome ";
-        String text=" it is great to see you again"; 
-        String FirstName="Khazimla ";
-        String lastName=" Dalasile";
-
-        
-       if(login.equals(loginPass)&& login.equals(loginUser)) {
-           System.out.print(text1 + FirstName +lastName+ text);
-           
-       }
-       else{
-           System.out.print("Username or password incorrect, please try again");
-           
-       }
-      return check;
-    }
     
 }
 
