@@ -19,7 +19,7 @@ public class PoePart1 {
         
         
         Scanner sc= new Scanner(System.in);
-        //prompt the user
+        //prompt the user while checking the requirements
         do{
         System.out.print("Please Enter Username: ");
         Username=sc.next();
@@ -41,7 +41,7 @@ public class PoePart1 {
         //calling my class
          second.Username(Username);
          second.checkPassword(Password);
-         second.registerUser();
+         second.loginUser();
          
          
         

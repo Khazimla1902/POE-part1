@@ -52,11 +52,11 @@ public class login {
         return check;
     }
     
-    public String registerUser(){
+    public boolean loginUser(){
         String Username="Asa_";
         String Password="@Kozangawe1";
         String text1="Welcome ";
-        String text=" it is great to see you again";
+        String text=" it is great to see you again"; 
         String FirstName="Khazimla ";
         String lastName=" Dalasile";
         boolean check=true;
@@ -64,13 +64,14 @@ public class login {
         
         if(Username.equals("Asa_")&& Password.equals("@Kozangawe1")){                 
        System.out.print(text1 + FirstName + lastName + text);
-        check=false;
+        check=true;
         }
         else{
             System.out.print("Username or password incorrect, please try again");
-        check=true;
+        check=false;
         }
-        return null;
+        return check;
+        
         
     }
     
