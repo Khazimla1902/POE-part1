@@ -14,47 +14,24 @@ public class PoePart1 {
     public static void main(String[] args) {
     login second = new login();
     Scanner sc = new Scanner (System.in);
-        String Username,pass, firstName, lastName , loginUser , loginPass  ;
+        login user = new login();
         
-        
-        
-        
-        
-        System.out.print("Please Create Username: ");
-        Username=sc.next();
-        
-        
-        
-        System.out.print("Please Create Password: ");
-        pass=sc.next();
-       
-       
-        
-        
-        System.out.print("Please enter First Name : ");
-        firstName=sc.next();
-        
-        System.out.print("Please enter last Name: ");
-        lastName=sc.next();
-        
-        String registration = second.registerUser();
-        System.out.print(registration);
-        
-        
-         
-        
-          
-        if(registration.equals("Username and password successfully registered")){
-            System.out.println("Please Login to your account");
-         
-         
-        System.out.println("Please enter your Username: ");
-        loginUser=sc.next();
-        System.out.print("Please enter your Password: ");
-        loginPass=sc.next();
-            
-        }
-        System.out.println(second.returnLoginStatus(Username, pass));
+        // Set user details
+        user.Username = "john_";
+        user.pass = "P@ssw0rd";
+        user.firstName = "John";
+        user.lastName = "Doe";
+
+        // Attempt to register the user
+        String registrationResult = user.registerUser();
+        System.out.println("Registration result: " + registrationResult);
+
+        // Attempt to login
+        boolean loginSuccess = user.loginUser("john_", "P@ssw0rd");
+        String loginStatus = user.returnLoginStatus("john_", "P@ssw0rd");
+        System.out.println("Login success: " + loginSuccess);
+        System.out.println("Login status: " + loginStatus);
+    }
         
     }
     
