@@ -12,49 +12,35 @@ import java.util.regex.Pattern;
 public class PoePart1 {
 
     public static void main(String[] args) {
-                 login second = new login();
-
-        //Declarations
-        String Username, loginPass, loginUser, Password, lastName,firstName ;
+    login second = new login();
+    Scanner sc = new Scanner (System.in);
+    String loginUser, loginPass;
+                 
         
-        
-        Scanner sc= new Scanner(System.in);
-        //prompt the user while checking the requirements
-        do{
-        System.out.print("Please Enter Username: ");
-        Username=sc.next();
-        }while(second.Username(Username));
-        
-        System.out.print("Please enter First Name: ");
-        firstName=sc.next();
-        
-        System.out.print("Please enter Last Name: ");
-        lastName=sc.next();
-        
-        
-        
-        
-        do{
-       System.out.print("Please enter Password: ");
-        Password=sc.next();
-        }while(second.checkPassword(Password));
-        
-        
-        
-         //login to the acoount using the same details
-         do{
-        System.out.println("Please enter your Username: ");
-        loginUser=sc.next();
-       System.out.print("Please enter your Password: ");
-        loginPass=sc.next();
-        }while(second.loginUser(loginUser, loginPass, loginUser));
+    do{
+    second.promptTheUser();
+    }while(second.checkUserName() && second.checkPasswordComplexity());
         
         
         
         
         
         
+                
         
-    }
+        
+        
     
+        
+        
+  
+    
+        
+        
+
+                       
+    
+ 
+    
+
 }
