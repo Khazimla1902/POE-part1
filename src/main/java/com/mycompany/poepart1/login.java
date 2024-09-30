@@ -17,7 +17,12 @@ public class login {
     String pass;
     String firstName;
     String lastName;
-    String regex="=\"^(?=.*[A-Z])(?=.*[a-z])(?=.*\\\\d)(?=.*[@$!%*#?&]).{8,}$";
+    String regex="^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*#?&]).{8,}$";
+    
+    
+    
+    
+    
     
     public boolean checkUserName(){
         return Username.contains("_")&& Username.length()<=5;
@@ -33,9 +38,26 @@ public class login {
          if(!checkPasswordComplexity()){
              return "Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a numberand a special character";
          }
-         return "Username successfully registered";
+         return "Username and password successfully registered";
          
-     }    
+     }    public boolean loginUser(String storedUsername, String storedPassword){
+         return storedUsername.equals(Username)&& storedPassword.equals(pass);
+     }
+     
+     
+     
+     
+     
+     public String returnLoginStatus(String storedUsername, String storedPassword){
+       
+         
+         if(loginUser(storedUsername, storedPassword)){
+             return "Welcome" + firstName+ "  " + lastName +", it is great to see you again";
+         }else {
+             return "Username or password incorrect, please try again.";
+         }
+         
+     }
     
         
         
