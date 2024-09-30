@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class PoePart1 {
 
     public static void main(String[] args) {
-    login second = new login();
+    
     Scanner sc = new Scanner (System.in);
         login user = new login();
         
@@ -59,6 +59,6 @@ public class PoePart1 {
                        
     
  
-    }
+
 
 
