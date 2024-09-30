@@ -15,7 +15,7 @@ public class PoePart1 {
                  login second = new login();
 
         //Declarations
-        String Username, firstName, lastName, Password;
+        String Username, loginPass, loginUser, Password, lastName,firstName ;
         
         
         Scanner sc= new Scanner(System.in);
@@ -30,20 +30,25 @@ public class PoePart1 {
         
         System.out.print("Please enter Last Name: ");
         lastName=sc.next();
-       
+        
+        
         
         
         do{
        System.out.print("Please enter Password: ");
         Password=sc.next();
+        }while(second.checkPassword(Password));
         
-        }while(!second.checkPassword(Password));
-        //calling my class
-         second.Username(Username);
-         second.checkPassword(Password);
-         second.loginUser();
-         
-         
+        
+        
+         //login to the acoount using the same details
+         do{
+        System.out.println("Please enter your Username: ");
+        loginUser=sc.next();
+       System.out.print("Please enter your Password: ");
+        loginPass=sc.next();
+        }while(second.loginUser(loginUser, loginPass, loginUser));
+        
         
         
         
