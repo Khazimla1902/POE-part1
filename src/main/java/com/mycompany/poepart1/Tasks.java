@@ -39,3 +39,18 @@ public boolean checkTaskDescription(){
             developerDetails.toUpperCase();
         return taskNamePrefix + ":" + taskNumber + ":" + developerSuffix;
     }
+     public String printTaskDetails() {
+        return "Task Status: " + taskStatus + "\n" +
+               "Developer Details: " + developerDetails + "\n" +
+               "Task Number: " + taskNumber + "\n" +
+               "Task Name: " + taskName + "\n" +
+               "Task Description: " + taskDescription + "\n" +
+               "Task ID: " + taskID + "\n" +
+               "Task Duration: " + taskDuration + " hours";
+    }
+
+    // Method to return task duration
+    public int returnTaskDuration() {
+        return taskDuration;
+    }
+}
