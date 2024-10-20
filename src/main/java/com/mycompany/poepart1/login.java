@@ -4,8 +4,7 @@ package com.mycompany.poepart1;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-import java.util.regex.Pattern;
-import java.util.Scanner;
+
 /**
  *
  * @author RC_Student_lab
@@ -13,10 +12,10 @@ import java.util.Scanner;
 public class login {
     
     
-    String Username;
-    String pass;
-    String firstName;
-    String lastName;
+   String Username;
+     String pass;
+     String firstName;
+     String lastName;
     String regex="^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*#?&]).{8,}$";
     
     
