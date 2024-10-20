@@ -5,11 +5,16 @@
 package com.mycompany.poepart1;
 import java.util.Scanner;
 import java.util.regex.Pattern;
+import javax.swing.*;
+import java.util.ArrayList;
 /**
  *
  * @author RC_Student_lab
  */
 public class PoePart1 {
+    private static boolean loggedIn = false;
+    private static ArrayList<Task> tasks = new ArrayList<>();
+    private static int taskCounter = 0;
 
     public static void main(String[] args) {
     
@@ -51,6 +56,41 @@ public class PoePart1 {
         }
 
         scanner.close();
+        
+        
+         // Login functionality
+        while (!loggedIn) {
+            JOptionPane.showMessageDialog(null, "Please log in to continue.");
+            // Implement login logic here
+            loggedIn = true; // For now, we'll assume login is always successful
+        }
+
+        JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
+
+        while (true) {
+            String[] options = {"Add tasks", "Show report", "Quit"};
+            int choice = JOptionPane.showOptionDialog(null, "Please choose an option:", "EasyKanban Menu",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                    null, options, options[0]);
+            
+            switch (choice) {
+                case 1 :
+                    Tasks();
+                    break;
+                case 2 :
+                    JOptionPane.showMessageDialog(null, "Coming Soon");
+                    break;
+                case 3 :
+                    JOptionPane.showMessageDialog(null, "Exiting EasyKanban. Goodbye!");
+                    return;
+                default:
+                    return;
+            }
+        
+        }
+        
+        
+        
     }
     
 }
