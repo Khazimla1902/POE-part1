@@ -6,6 +6,7 @@ package com.mycompany.poepart1;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.ArrayList;
+import javax.swing. JDialog;
 import javax.swing.JOptionPane;
 /**
  *
@@ -29,6 +30,9 @@ public class PoePart1 {
        
         login second = new login();
        Scanner scanner = new Scanner(System.in);
+       
+       final JDialog dialog = new JDialog();
+       dialog.setAlwaysOnTop(loggedIn);
         
         //Prompt for user details
        System.out.print("Please Create username: ");
@@ -65,21 +69,20 @@ public class PoePart1 {
         
     
         while (!loggedIn) {
-            JOptionPane.showMessageDialog(null, "Please log in to continue.");
-            
-            
-           loggedIn = true;
-           
-        second.Username= JOptionPane.showInputDialog(null, "Please Enter Username: ", args);
-            second.Username =  scanner.next();
-            second.pass = JOptionPane.showInputDialog(null, "Please enter Password", args);
-            second.pass = scanner.next();
-            
-          }
-        
+    second.Username = JOptionPane.showInputDialog("Please Enter Username: ");
+    second.pass = JOptionPane.showInputDialog("Please enter Password: ");
+    
+    boolean loginSuccess = second.loginUser(second.Username, second.pass);
+    if (loginSuccess) {
+        loggedIn = true;
+        JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
+    } else {
+        JOptionPane.showMessageDialog(null, "Login failed. Please try again.");
+    }
+}
             
 
-        JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
+       
         
 
         while (true) {
@@ -89,21 +92,22 @@ public class PoePart1 {
                     null, options, options[0]);
             
             switch (choice) {
-                case 1 :
+                case 0 :
                     addTasks();
                     break;
-                case 2 :
+                case 1 :
                     JOptionPane.showMessageDialog(null, "Coming Soon");
                     break;
-                case 3 :
+                case 2 :
                     JOptionPane.showMessageDialog(null, "Exiting EasyKanban. Goodbye!");
                     return;
                 default:
                     return;
+                    
             }
-        
+        dialog.dispose();
         }
-      
+        
         
         
     }
@@ -159,8 +163,10 @@ public class PoePart1 {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Invalid input. Please enter a number.");
             return;
+            
+           
         }
-        
+       
         
     }
 }
