@@ -37,6 +37,8 @@ public class login {
          if(!checkPasswordComplexity()){
              return "Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a numberand a special character";
          }
+         
+         
          return "Username and password successfully registered";
          
      }    public boolean loginUser(String storedUsername, String storedPassword){

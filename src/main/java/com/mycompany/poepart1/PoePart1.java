@@ -13,65 +13,71 @@ import javax.swing.JOptionPane;
  */
 public class PoePart1 {
     private static boolean loggedIn = false;
-   // private static ArrayList<Task> tasks = new ArrayList<>();
+   private static ArrayList<Tasks> tasks = new ArrayList<>();
     private static int taskCounter = 0;
 
     public static void main(String[] args) {
-    boolean loginSuccess;
+    
+        
+    
+    
    
+        Tasks task = new Tasks();
         
         
+               
+       
         login second = new login();
        Scanner scanner = new Scanner(System.in);
         
-        // Prompt for user details
-       //System.out.print("Please Create username: ");
-        //second.Username = scanner.nextLine();
+        //Prompt for user details
+       System.out.print("Please Create username: ");
+        second.Username = scanner.nextLine();
 
-        //System.out.print("Please Create password: ");
-       //second.pass = scanner.nextLine();
+        System.out.print("Please Create password: ");
+       second.pass = scanner.nextLine();
 
-       // System.out.print("PLease Enter first name: ");
-       // second.firstName = scanner.nextLine();
+       System.out.print("PLease Enter first name: ");
+       second.firstName = scanner.nextLine();
 
-        //System.out.print("Please Enter last name: ")
-        //second.lastName = scanner.nextLine();
+        System.out.print("Please Enter last name: ");
+        second.lastName = scanner.nextLine();
 
         // register the user
-        //String registrationResult = second.registerUser();
-        //System.out.println("Registration result: " + registrationResult);
+        String registrationResult = second.registerUser();
+        System.out.println("Registration result: " + registrationResult);
 
         // If registration is successful, attempt to login
-        //if (registrationResult.equals("Username and password successfully registered")) {
-           // System.out.print("Enter username to login: ");
-            //String loginUsername = scanner.nextLine();
+        if (registrationResult.equals("Username and password successfully registered")) {
+            System.out.print("Enter username to login: ");
+            String loginUsername = scanner.nextLine();
 
-           // System.out.print("Enter password to login: ");
-            //String loginPassword = scanner.nextLine();
+            System.out.print("Enter password to login: ");
+            String loginPassword = scanner.nextLine();
 
-            //boolean loginSuccess = second.loginUser(loginUsername, loginPassword);
-            //String loginStatus = second.returnLoginStatus(loginUsername, loginPassword);
-            //System.out.println("Login success: " + loginSuccess);
-            //System.out.println("Login status: " + loginStatus);
-       // }
+            boolean loginSuccess = second.loginUser(loginUsername, loginPassword);
+            String loginStatus = second.returnLoginStatus(loginUsername, loginPassword);
+            System.out.println("Login success: " + loginSuccess);
+            System.out.println("Login status: " + loginStatus);
+       }
 
-        //scanner.close();
+        scanner.close();
         
     
         while (!loggedIn) {
             JOptionPane.showMessageDialog(null, "Please log in to continue.");
             
             
-            //loggedIn = true;
-            
-            
-            
-            
-        }
-        second.Username= JOptionPane.showInputDialog(null, "Please Enter Username: ");
+           loggedIn = true;
+           
+        second.Username= JOptionPane.showInputDialog(null, "Please Enter Username: ", args);
             second.Username =  scanner.next();
-            second.pass = JOptionPane.showInputDialog(null, "Please enter Password");
+            second.pass = JOptionPane.showInputDialog(null, "Please enter Password", args);
             second.pass = scanner.next();
+            
+          }
+        
+            
 
         JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
         
@@ -97,20 +103,65 @@ public class PoePart1 {
             }
         
         }
-        
+      
         
         
     }
     private static void addTasks() {
+        
+        
         String input = JOptionPane.showInputDialog("How many tasks would you like to add?");
-        int numTasks;
+        int numTasks=0;
         try {
             numTasks = Integer.parseInt(input);
+                           
+        Tasks task = new Tasks(); 
+            
+            for(int count= 0;count<numTasks;count++){
+            
+                
+
+                
+                  String taskName = JOptionPane.showInputDialog("Enter task name: ");
+        int taskNumber=0;
+         String taskDescription = JOptionPane.showInputDialog(null,"Enter task description: ");
+         
+        String developerDetails = JOptionPane.showInputDialog(null,"Please Enter Developer details ");
+         
+       int taskDuration=Integer.parseInt(JOptionPane.showInputDialog("Please enter duration"));
+         
+         
+        
+        
+        
+        
+        if(!task.checkTaskDescription()){
+            JOptionPane.showMessageDialog(null,"Please nter a task decription of less than 50 characters");
+            return;
+        }
+        String taskID = task.createTaskID();
+        JOptionPane.showMessageDialog(null, "Task ID: " + taskID);
+        
+        
+        JOptionPane.showMessageDialog(null,task.printTaskDetails());
+        
+        task.taskStatus ="Done";
+        JOptionPane.showMessageDialog(null,"Task Status" + task.taskStatus);
+        
+        
+        
+        
+               task.example(input, taskCounter, input, input, taskCounter);
+                
+        }
+            
+            
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Invalid input. Please enter a number.");
             return;
         }
-
+        
+        
     }
 }
     
