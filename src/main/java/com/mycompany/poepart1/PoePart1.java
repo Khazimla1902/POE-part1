@@ -93,7 +93,7 @@ public class PoePart1 {
             
             switch (choice) {
                 case 0 :
-                    addTasks();
+                    task.addTasks();
                     break;
                 case 1 :
                     JOptionPane.showMessageDialog(null, "Coming Soon");
@@ -111,65 +111,10 @@ public class PoePart1 {
         
         
     }
-    private static void addTasks() {
-        
-        
-        String input = JOptionPane.showInputDialog("How many tasks would you like to add?");
-        int numTasks=0;
-        try {
-            numTasks = Integer.parseInt(input);
-                           
-        Tasks task = new Tasks(); 
-            
-            for(int count= 0;count<numTasks;count++){
-            
-                
-
-                
-                  String taskName = JOptionPane.showInputDialog("Enter task name: ");
-        int taskNumber=0;
-         String taskDescription = JOptionPane.showInputDialog(null,"Enter task description: ");
-         
-        String developerDetails = JOptionPane.showInputDialog(null,"Please Enter Developer details ");
-         
-       int taskDuration=Integer.parseInt(JOptionPane.showInputDialog("Please enter duration"));
-         
-         
-        
-        
-        
-        
-        if(!task.checkTaskDescription()){
-            JOptionPane.showMessageDialog(null,"Please nter a task decription of less than 50 characters");
-            return;
-        }
-        String taskID = task.createTaskID();
-        JOptionPane.showMessageDialog(null, "Task ID: " + taskID);
-        
-        
-        JOptionPane.showMessageDialog(null,task.printTaskDetails());
-        
-        task.taskStatus ="Done";
-        JOptionPane.showMessageDialog(null,"Task Status" + task.taskStatus);
-        
-        
-        
-        
-               task.example(input, taskCounter, input, input, taskCounter);
-                
-        }
-            
-            
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Invalid input. Please enter a number.");
-            return;
-            
-           
-        }
-       
-        
+    
+    
+   
     }
-}
     
         
     
