@@ -23,18 +23,18 @@ public class login {
     
     
     
-    public boolean checkUserName(){
+    public boolean checkUserName(String Username){
         return Username.contains("_")&& Username.length()<=5;
     }
-    public boolean checkPasswordComplexity(){
+    public boolean checkPasswordComplexity( String regex){
         return pass.matches(regex);
         
     }
      public String registerUser()  {
-         if(!checkUserName()){
+         if(!checkUserName(Username)){
            return "Username is not correctly formatted, please ensure that your username contains an underscore is no more 5 characters in length";  
          }
-         if(!checkPasswordComplexity()){
+         if(!checkPasswordComplexity(regex)){
              return "Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a numberand a special character";
          }
          
