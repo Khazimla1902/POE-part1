@@ -48,7 +48,7 @@ public class PoePart1 {
         second.lastName = scanner.nextLine();
 
         // register the user
-        String registrationResult = second.registerUser();
+        String registrationResult = second.registerUser(second.Username);
         System.out.println("Registration result: " + registrationResult);
 
         // If registration is successful, attempt to login
@@ -60,7 +60,7 @@ public class PoePart1 {
             String loginPassword = scanner.nextLine();
 
             boolean loginSuccess = second.loginUser(loginUsername, loginPassword);
-            String loginStatus = second.returnLoginStatus(loginUsername, loginPassword);
+            String loginStatus = second.returnLoginStatus(loginSuccess);
             System.out.println("Login success: " + loginSuccess);
             System.out.println("Login status: " + loginStatus);
        }
@@ -68,23 +68,19 @@ public class PoePart1 {
         scanner.close();
         
     
-        while (!loggedIn) {
-    second.Username = JOptionPane.showInputDialog("Please Enter Username: ");
-    second.pass = JOptionPane.showInputDialog("Please enter Password: ");
-    
+        //PART TWO!!!!
     boolean loginSuccess = second.loginUser(second.Username, second.pass);
     if (loginSuccess) {
-        loggedIn = true;
         JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
     } else {
         JOptionPane.showMessageDialog(null, "Login failed. Please try again.");
     }
-}
+
             
 
        
         
-
+        // creating a menu using switch and cases and it must show only when the user ha loggin successfully
         while (true) {
             String[] options = {"Add tasks", "Show report", "Quit"};
             int choice = JOptionPane.showOptionDialog(null, "Please choose an option:", "EasyKanban Menu",

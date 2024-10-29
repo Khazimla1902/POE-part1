@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
  * @author RC_Student_lab
  */
 class Tasks {
+    //declarations
      private static String [] taskName;
      private static int[] taskNumber;
      private static String [] taskDescription;
@@ -18,23 +19,7 @@ class Tasks {
      private static int[] taskDuration;
      private static String[] taskID;
     private static String[] taskStatus;
-    
    
-    
-    
-//    public void  Tasks(String taskName, int taskNumber, String taskDescription, String developerDetails, int taskDuration){
-//        
-//        this.taskName = taskName;
-//        this.taskNumber = taskNumber;
-//        this.taskDescription = taskDescription;
-//        this.developerDetails = developerDetails;
-//        this.taskDuration = taskDuration;
-//        this.taskID = createTaskID();
-//        this.taskStatus = "To Do";
-//        
-//    }
-
-  
    //checking task description
 public boolean checkTaskDescription( String taskDescription){
             return taskDescription.length() <= 50;
@@ -49,6 +34,7 @@ public boolean checkTaskDescription( String taskDescription){
             developerDetails.toUpperCase();
         return taskNamePrefix + ":" + taskNumber + ":" + developerSuffix;
     }
+    // display print details
      public String printTaskDetails(int details) {
         return "Task Status: " + taskStatus[details] + "\n" +
                "Developer Details: " + developerDetails[details] + "\n" +
@@ -63,6 +49,7 @@ public boolean checkTaskDescription( String taskDescription){
     public int returnTaskDuration(int taskDuration) {
         return taskDuration;
     }
+    //creating a new mehod for requirements
     public void addTasks() {
         
         String [] choices = new String[]{"To Do", "Done","Doing"};
@@ -71,44 +58,50 @@ public boolean checkTaskDescription( String taskDescription){
         try {
             numTasks = Integer.parseInt(input);
                            
-        Tasks task = new Tasks(); 
+        
             
             for(int count= 0;count<numTasks;count++){
            
                 
-                    
+          //Arrays and prompting          
         taskName = new String[numTasks];
         taskName[count]= JOptionPane.showInputDialog("Enter task name: "+ (count + 1)+ ":");
         
         taskNumber = new int[numTasks];
-        taskNumber[count]=0;
+        taskNumber[count]=count;
         
         taskDescription = new String [numTasks];
+        do{
         taskDescription[count] = JOptionPane.showInputDialog(null,"Enter task description: ");
+        
+        if(!checkTaskDescription(taskDescription[count])){
+            JOptionPane.showMessageDialog(null,"Please enter a task decription of less than 50 characters");
+           
+        }
+        else{
+              JOptionPane.showMessageDialog(null,"Description has been captured");
+              break;
+            
+        }
+        
+        }
+        while(taskDescription[count].length() > 50);
          
          developerDetails = new String [numTasks];
         developerDetails[count] = JOptionPane.showInputDialog(null,"Please Enter Developer details ");
        
         taskDuration = new int[numTasks];
-       taskDuration[count]=Integer.parseInt(JOptionPane.showInputDialog("Please enter duration: "));
-         taskDuration[count]=0;
+       taskDuration[count]=Integer.parseInt(JOptionPane.showInputDialog("Please enter duration: " + (count+1)+ ":"));
+         //taskDuration[count]=0;
          
-        if(!checkTaskDescription(taskDescription[count])){
-            JOptionPane.showMessageDialog(null,"Please enter a task decription of less than 50 characters");
-            return;
-        }
+        
         taskID = new String[numTasks];
         taskID[count] =createTaskID(taskName[count],developerDetails[count],count);
-        JOptionPane.showMessageDialog(null, "Task ID: " + taskID);
+        JOptionPane.showMessageDialog(null, "Task ID: " + taskID[count]);
         
         taskStatus = new String [numTasks];
         taskStatus[count] = (String)JOptionPane.showInputDialog(null,"Task Status: ","Choose a Status",JOptionPane.QUESTION_MESSAGE,null,choices ,choices[2]);
-//        if(task.taskStatus == null){
-//            task.taskStatus = "To Do";
-//        }
 //        
- 
-               //taskDuration[count] = taskDuration;
                
            JOptionPane.showMessageDialog(null, "Task Details:\n"+ printTaskDetails(count));
                
