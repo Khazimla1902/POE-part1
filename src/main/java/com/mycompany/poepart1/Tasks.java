@@ -5,6 +5,7 @@
 package com.mycompany.poepart1;
 
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,6 +20,13 @@ class Tasks {
      private static int[] taskDuration;
      private static String[] taskID;
     private static String[] taskStatus;
+    
+    // Arrays to store multiple tasks
+    private static ArrayList<String> developers = new ArrayList<>();
+    private static ArrayList<String> taskNames = new ArrayList<>();
+    private static ArrayList<String> taskIDs = new ArrayList<>();
+    private static ArrayList<Integer> taskDurations = new ArrayList<>();
+    private static ArrayList<String> taskStatuses = new ArrayList<>();
    
    //checking task description
 public boolean checkTaskDescription( String taskDescription){
