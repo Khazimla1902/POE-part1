@@ -168,6 +168,104 @@ public boolean checkTaskDescription( String taskDescription){
             
            
         }
+        
        
+}
+    public static void displayDoneTask() {
+        StringBuilder output = new StringBuilder("Completed Tasks:\n\n");
+        for (int i = 0; i < taskStatus.size(); i++) {
+            if (taskStatus.get(i).equalsIgnoreCase("Done")) {
+                output.append("Developer: ").append(developerDetails.get(i))
+                      .append("\nTask Name: ").append(taskName.get(i))
+                      .append("\nDuration: ").append(taskDuration.get(i))
+                      .append(" hours\n\n");
+            }
+        }
+        JOptionPane.showMessageDialog(null, output.toString());
+    }
+    public static void displayLongestTask() {
+        int maxDuration = 0;
+        int maxIndex = 0;
+        
+        for (int i = 0; i < taskDuration.size(); i++) {
+            if (taskDuration.get(i) > maxDuration) {
+                maxDuration = taskDuration.get(i);
+                maxIndex = i;
+            }
+                    }
+        
+        String output = "Task with Longest Duration:\n" +
+                       "Developer: " + developerDetails.get(maxIndex) + "\n" +
+                       "Duration: " + maxDuration + " hours";
+        JOptionPane.showMessageDialog(null, output);
+        
+    }
+    public static void searchByTaskName(String searchName) {
+        for (int i = 0; i < taskName.size(); i++) {
+            if (taskName.get(i).equalsIgnoreCase(searchName)) {
+                String output = "Task Found:\n" +
+                              "Task Name: " + taskName.get(i) + "\n" +
+                              "Developer: " + developerDetails.get(i) + "\n" +
+                              "Status: " + taskStatus.get(i);
+                JOptionPane.showMessageDialog(null, output);
+                return;
+            }
+        }
+          JOptionPane.showMessageDialog(null, "Task not found!");
+    }
+     public static void searchByDeveloper(String searchDev) {
+        StringBuilder output = new StringBuilder("Tasks for developer " + searchDev + ":\n\n");
+        boolean found = false;
+        
+        for (int i = 0; i < developerDetails.size(); i++) {
+            if (developerDetails.get(i).equalsIgnoreCase(searchDev)) {
+                output.append("Task Name: ").append(taskName.get(i))
+                      .append("\nStatus: ").append(taskStatus.get(i))
+                      .append("\n\n");
+                found = true;
+            }
+        }
+        
+        if (!found) {
+            JOptionPane.showMessageDialog(null, "No tasks found for this developer!");
+        } else {
+            JOptionPane.showMessageDialog(null, output.toString());
+        }
+    }
+     
+     public static void displayAllTasks() {
+        StringBuilder report = new StringBuilder("Full Task Report:\n\n");
+        
+        for (int i = 0; i < taskName.size(); i++) {
+            report.append("Task #").append(i + 1).append("\n")
+                  .append("Task Name: ").append(taskName.get(i)).append("\n")
+                  .append("Developer: ").append(developerDetails.get(i)).append("\n")
+                  .append("Task ID: ").append(taskID.get(i)).append("\n")
+                  .append("Duration: ").append(taskDuration.get(i)).append(" hours\n")
+                  .append("Status: ").append(taskStatus.get(i)).append("\n\n");
+        }
+        
+        JOptionPane.showMessageDialog(null, report.toString());
+    }
+     public static void deleteTask(String taskNameToDelete) {
+    // Iterate through the list of task names to find the task
+    for (int i = 0; i < taskName.size(); i++) {
+        // If task name matches (case insensitive), delete the task
+        if (taskName.get(i).equalsIgnoreCase(taskNameToDelete)) {
+            // Remove the task details from all the associated ArrayLists
+            taskName.remove(i);
+            taskID.remove(i);
+            developerDetails.remove(i);
+            taskDuration.remove(i);
+            taskStatus.remove(i);
+            
+            // Notify the user that the task has been deleted successfully
+            JOptionPane.showMessageDialog(null, "Task deleted successfully ");
+            return;  // Exit the method after successful deletion
+        }
+    }
+    
+    // If no task was found that matches the given task name
+    JOptionPane.showMessageDialog(null, "Task not found!");
 }
 }
