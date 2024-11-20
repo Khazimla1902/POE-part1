@@ -11,7 +11,8 @@ package com.mycompany.poepart1;
  */
 public class login {
     
-    
+    String storedUsername;
+    String storedPassword;
    String Username;
      String pass;
      String firstName;
@@ -42,8 +43,8 @@ public class login {
          
          return "Username and password successfully registered";
          
-     }    public boolean loginUser(String storedUsername, String storedPassword){
-         return storedUsername.equals(Username)&& storedPassword.equals(pass);
+     }    public boolean loginUser(String Username, String pass){
+         return Username.equals(storedUsername)&& pass.equals(storedPassword);
      }
      
      
@@ -54,7 +55,7 @@ public class login {
        
          
          if(login){
-             return "Welcome" + firstName+ "  " + lastName +", it is great to see you again";
+             return "Welcome" +" "+ firstName+ "  " + lastName +", it is great to see you again";
          }else {
              return "Username or password incorrect, please try again.";
          }

@@ -12,24 +12,13 @@ import java.util.ArrayList;
  * @author RC_Student_lab
  */
 class Tasks {
-    //declarations
-     //private static String [] taskName;
-     //private static int[] taskNumber;
-     //private static String [] taskDescription;
-     //private static String[] developerDetails;
-     //private static int[] taskDuration;
-     //private static String[] taskID;
-    //private static String[] taskStatus;
-     
-    
-    
+  
     private static ArrayList<String> taskName = new ArrayList<>();
     private static ArrayList<String> taskID = new ArrayList<>();
     private static ArrayList<String> taskDescription = new ArrayList<>();
     private static ArrayList<String> developerDetails = new ArrayList<>();
     private static ArrayList<Integer> taskDuration = new ArrayList<>();
     private static ArrayList<String> taskStatus = new ArrayList<>();
-
     private static final String[] choices = {"To Do", "Done", "Doing"};
     
     
@@ -37,7 +26,7 @@ class Tasks {
    
    //checking task description
 public boolean checkTaskDescription( String taskDescription){
-            return taskDescription.length() <= 50;
+            return taskDescription.length() <= 50;//this method must return a task decription that is less than 50
           
               
    }
@@ -67,46 +56,21 @@ public boolean checkTaskDescription( String taskDescription){
     //creating a new mehod for requirements
     public void addTasks() {
         
-        //String [] choices = new String[]{"To Do", "Done","Doing"};
+        
         String input = JOptionPane.showInputDialog("How many tasks would you like to add?");
         int numTasks=0;
         try {
-            numTasks = Integer.parseInt(input);
-            
-            
-            
-     
-        
-            
+            numTasks = Integer.parseInt(input); 
             for(int count= 0;count<numTasks;count++){
-           
-                
+             
           //Arrays and prompting          
         
         String Input= JOptionPane.showInputDialog("Enter task name: "+ (count + 1)+ ":");
-         taskName.add(Input);
+         taskName.add(Input);//The user is prompted to enter a task name, and the input is added to the taskName ArrayList.
         
         
         int taskNumber = count + 1;
-        
-        
-        
-       // do{
-        //taskDescription[count] = JOptionPane.showInputDialog(null,"Enter task description: ");
-        
-       // if(!checkTaskDescription(taskDescription[count])){
-            //JOptionPane.showMessageDialog(null,"Please enter a task decription of less than 50 characters");
-           
-        //}
-        //else{
-             // JOptionPane.showMessageDialog(null,"Description has been captured");
-              //break;
-            
-        //}
-        
-        //}
-        //while(taskDescription[count].length() > 50);
-        String taskDescriptionInput;
+       String taskDescriptionInput;
                 do {
                     taskDescriptionInput = JOptionPane.showInputDialog("Enter task description for task " + (count + 1) + ":");
                     if (!checkTaskDescription(taskDescriptionInput)) {
@@ -117,22 +81,9 @@ public boolean checkTaskDescription( String taskDescription){
                     }
                 } while (taskDescriptionInput.length() > 50);
 
-                taskDescription.add(taskDescriptionInput);
-         
-         
-        //developerDetails[count] = JOptionPane.showInputDialog(null,"Please Enter Developer details ");
-       
-        //taskDuration = new int[numTasks];
-       //taskDuration[count]=Integer.parseInt(JOptionPane.showInputDialog("Please enter duration: " + (count+1)+ ":"));
-         //taskDuration[count]=0;
+                taskDescription.add(taskDescriptionInput);//The user is prompted to enter a task description, which is validated to ensure it's no longer than 50 character then it's added to the taskDescription ArrayList.
          
         
-        
-        //taskID[count] =createTaskID(taskName[count],developerDetails[count],count);
-        //JOptionPane.showMessageDialog(null, "Task ID: " + taskID[count]);
-        
-        
-        //taskStatus[count] = (String)JOptionPane.showInputDialog(null,"Task Status: ","Choose a Status",JOptionPane.QUESTION_MESSAGE,null,choices ,choices[2]);
           // Prompt for developer details
                 String developerDetailsInput = JOptionPane.showInputDialog("Please enter developer details for task " + (count + 1) + ":");
                 developerDetails.add(developerDetailsInput);
@@ -171,7 +122,7 @@ public boolean checkTaskDescription( String taskDescription){
         
        
 }
-    public static void displayDoneTask() {
+    public void displayDoneTask() {
         StringBuilder output = new StringBuilder("Completed Tasks:\n\n");
         for (int i = 0; i < taskStatus.size(); i++) {
             if (taskStatus.get(i).equalsIgnoreCase("Done")) {
@@ -183,7 +134,7 @@ public boolean checkTaskDescription( String taskDescription){
         }
         JOptionPane.showMessageDialog(null, output.toString());
     }
-    public static void displayLongestTask() {
+    public void displayLongestTask() {
         int maxDuration = 0;
         int maxIndex = 0;
         
@@ -200,7 +151,7 @@ public boolean checkTaskDescription( String taskDescription){
         JOptionPane.showMessageDialog(null, output);
         
     }
-    public static void searchByTaskName(String searchName) {
+    public void searchByTaskName(String searchName) {
         for (int i = 0; i < taskName.size(); i++) {
             if (taskName.get(i).equalsIgnoreCase(searchName)) {
                 String output = "Task Found:\n" +
@@ -213,7 +164,7 @@ public boolean checkTaskDescription( String taskDescription){
         }
           JOptionPane.showMessageDialog(null, "Task not found!");
     }
-     public static void searchByDeveloper(String searchDev) {
+     public  void searchByDeveloper(String searchDev) {
         StringBuilder output = new StringBuilder("Tasks for developer " + searchDev + ":\n\n");
         boolean found = false;
         
@@ -233,7 +184,7 @@ public boolean checkTaskDescription( String taskDescription){
         }
     }
      
-     public static void displayAllTasks() {
+     public void displayAllTasks() {
         StringBuilder report = new StringBuilder("Full Task Report:\n\n");
         
         for (int i = 0; i < taskName.size(); i++) {
@@ -247,19 +198,19 @@ public boolean checkTaskDescription( String taskDescription){
         
         JOptionPane.showMessageDialog(null, report.toString());
     }
-     public static void deleteTask(String taskNameToDelete) {
-    // Iterate through the list of task names to find the task
+     public  void deleteTask(String taskNameToDelete) {
+    
     for (int i = 0; i < taskName.size(); i++) {
-        // If task name matches (case insensitive), delete the task
+        
         if (taskName.get(i).equalsIgnoreCase(taskNameToDelete)) {
-            // Remove the task details from all the associated ArrayLists
+            
             taskName.remove(i);
             taskID.remove(i);
             developerDetails.remove(i);
             taskDuration.remove(i);
             taskStatus.remove(i);
             
-            // Notify the user that the task has been deleted successfully
+            
             JOptionPane.showMessageDialog(null, "Task deleted successfully ");
             return;  // Exit the method after successful deletion
         }

@@ -48,8 +48,8 @@ public class PoePart1 {
         second.lastName = scanner.nextLine();
 
         // register the user
-        String registrationResult = second.registerUser(second.Username);
-        System.out.println("Registration result: " + registrationResult);
+        String registrationResult = second.registerUser(second.Username, second.pass);
+        System.out.println(registrationResult);
 
         // If registration is successful, attempt to login
         if (registrationResult.equals("Username and password successfully registered")) {
@@ -60,29 +60,13 @@ public class PoePart1 {
             String loginPassword = scanner.nextLine();
 
             boolean loginSuccess = second.loginUser(loginUsername, loginPassword);
-            String loginStatus = second.returnLoginStatus(loginSuccess);
-            System.out.println("Login success: " + loginSuccess);
-            System.out.println("Login status: " + loginStatus);
-       }
-
-        scanner.close();
-        
-    
-        //PART TWO!!!!
-    boolean loginSuccess = second.loginUser(second.Username, second.pass);
-    if (loginSuccess) {
+            System.out.println(second.returnLoginStatus(loginSuccess));
+            if (loginSuccess) {
+        loginSuccess = true;
         JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
-    } else {
-        JOptionPane.showMessageDialog(null, "Login failed. Please try again.");
-    }
-
-            
-
-       
-        
-        // creating a menu using switch and cases and it must show only when the user ha loggin successfully
+         // creating a menu using switch and cases and it must show only when the user ha loggin successfully
         while (true) {
-            String[] options = {"Add tasks", "Show report", "Quit"};
+            String[] options = {"Add tasks\n", "Show report\n", "Quit\n", "Display Done task\n", "Longest Task\n", "Search developer\n","Search Task Name\n", "Delete Tasks\n"};
             int choice = JOptionPane.showOptionDialog(null, "Please choose an option:", "EasyKanban Menu",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                     null, options, options[0]);
@@ -92,17 +76,49 @@ public class PoePart1 {
                     task.addTasks();
                     break;
                 case 1 :
-                    JOptionPane.showMessageDialog(null, "Coming Soon");
+                   
+                  task.displayAllTasks();
                     break;
                 case 2 :
                     JOptionPane.showMessageDialog(null, "Exiting EasyKanban. Goodbye!");
                     return;
+                case 3:
+                    task.displayDoneTask();
+                    break;
+                case 4:
+                    task.displayLongestTask();
+                    break;
+                case 5:
+                   String devName= JOptionPane.showInputDialog("Enter developer name to search:");
+                    task.searchByDeveloper(devName);
+                    break;
+                case 6:
+                   String inputname=  JOptionPane.showInputDialog("Enter task name to search:");
+                    task.searchByTaskName(inputname);
+                    break;
+                case 7:
+                    String taskDel=JOptionPane.showInputDialog("Enter task name to delete:");
+                    task.deleteTask(taskDel);
+                    break;
                 default:
                     return;
                     
             }
         dialog.dispose();
         }
+        
+    } else {
+        loginSuccess= false;
+       JOptionPane.showMessageDialog(null, "Login failed. Please try again.");
+       
+    }
+       }
+
+        
+      
+
+       
+        
         
         
         
