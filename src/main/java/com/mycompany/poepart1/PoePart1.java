@@ -24,8 +24,7 @@ public class PoePart1 {
     
    
         Tasks task = new Tasks();
-        
-        
+        Tasks2 p3 = new Tasks2();        
                
        
         login second = new login();
@@ -72,7 +71,7 @@ public class PoePart1 {
                 JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
                 // creating a menu using switch and cases and it must show only when the user the loggin successfully
                 while (true) {
-                    String[] options = {"Add tasks\n", "Show report\n", "Quit\n", "Display Done task\n", "Longest Task\n", "Search developer\n","Search Task Name\n", "Delete Tasks\n"};
+                    String[] options = {"Add tasks\n", "Show report\n", "Delete Task\n", "Display Done task\n", "Longest Task\n", "Search developer\n","Search Task Name\n", "Quit\n"};
                     int choice = JOptionPane.showOptionDialog(null, "Please choose an option:", "EasyKanban Menu",
                             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                             null, options, options[0]);//The menu
@@ -80,38 +79,39 @@ public class PoePart1 {
                     switch (choice) {
                         case 0 :
                             task.addTasks();//calling my external method add tasks
-                            break; 
+                            break;
                         case 1 :
                             
-                            task.displayAllTasks(Tasks.developerDetails, Tasks.taskName, 
+                            p3.displayAllTasks(Tasks.developerDetails, Tasks.taskName, 
                                 Tasks.taskStatus, Tasks.taskID, Tasks.taskDuration);
                             break;
                         case 2 :
-                            JOptionPane.showMessageDialog(null, "Exiting EasyKanban. Goodbye!");
+                            String taskDel=JOptionPane.showInputDialog("Enter task name to delete:");
+                            p3.deleteTask(taskDel, Tasks.developerDetails, Tasks.taskName, 
+                                Tasks.taskStatus, Tasks.taskID, Tasks.taskDuration);
                             return;
                         case 3:
                             
-                            task.displayDoneTask(Tasks.developerDetails, Tasks.taskName, 
+                            p3.displayDoneTask(Tasks.developerDetails, Tasks.taskName, 
                                 Tasks.taskDuration, Tasks.taskStatus);
                             break;
                         case 4:
-                            task.displayLongestTask(Tasks.taskDuration, Tasks.developerDetails);
+                            p3.displayLongestTask(Tasks.taskDuration, Tasks.developerDetails);
                             break;
                         case 5:
                             String devName= JOptionPane.showInputDialog("Enter developer name to search:");
-                            task.searchByDeveloper(devName, Tasks.developerDetails, Tasks.taskName, 
+                            p3.searchByDeveloper(devName, Tasks.developerDetails, Tasks.taskName, 
                                 Tasks.taskStatus);
                             break;
                         case 6:
                             String inputname=  JOptionPane.showInputDialog("Enter task name to search:");
-                            task.searchByTaskName(inputname, Tasks.developerDetails, Tasks.taskName, 
+                            p3.searchByTaskName(inputname, Tasks.developerDetails, Tasks.taskName, 
                                 Tasks.taskStatus);
                             break;
                         case 7:
-                            String taskDel=JOptionPane.showInputDialog("Enter task name to delete:");
-                            task.deleteTask(taskDel, Tasks.developerDetails, Tasks.taskName, 
-                                Tasks.taskStatus, Tasks.taskID, Tasks.taskDuration);
-                            break;
+                            JOptionPane.showMessageDialog(null, "Exiting EasyKanban. Goodbye!");
+                            return;
+                            
                         default:
                             return;
                             
