@@ -4,6 +4,7 @@
  */
 package com.mycompany.poepart1;
 
+import static java.lang.Integer.sum;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
@@ -50,8 +51,9 @@ public boolean checkTaskDescription( String taskDescription){
     }
 
     // Method to return task duration
-    public int returnTaskDuration(int taskDuration) {
-        return taskDuration;
+    public int returnTaskDuration(ArrayList<Integer> taskDuration) {
+        return taskDuration.get(taskDuration.size() - 1);
+
     }
     //creating a new mehod for requirements
     public void addTasks() {
@@ -59,6 +61,7 @@ public boolean checkTaskDescription( String taskDescription){
         
         String input = JOptionPane.showInputDialog("How many tasks would you like to add?");
         int numTasks=0;
+        int sum =0;
         try {
             numTasks = Integer.parseInt(input); 
             for(int count= 0;count<numTasks;count++){
@@ -87,10 +90,12 @@ public boolean checkTaskDescription( String taskDescription){
           // Prompt for developer details
                 String developerDetailsInput = JOptionPane.showInputDialog("Please enter developer details for task " + (count + 1) + ":");
                 developerDetails.add(developerDetailsInput);
+                
 
                 // Prompt for task duration
                 int taskDurationInput = Integer.parseInt(JOptionPane.showInputDialog("Please enter task duration (in hours) for task " + (count + 1) + ":"));
                 taskDuration.add(taskDurationInput);
+                sum += returnTaskDuration( taskDuration);
 
                 // Generate and display task ID
                 String taskIDInput = createTaskID(Input, developerDetailsInput, taskNumber);
@@ -104,6 +109,7 @@ public boolean checkTaskDescription( String taskDescription){
 
                 // Display task details
                 JOptionPane.showMessageDialog(null, "Task Details:\n" + printTaskDetails(count));
+                 JOptionPane.showMessageDialog(null, "Total Hours Of All Tasks: " + sum + " hours");
             }
 
                
