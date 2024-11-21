@@ -59,59 +59,68 @@ public class PoePart1 {
             System.out.print("Enter password to login: ");
             String loginPassword = scanner.nextLine();
 
-            boolean loginSuccess = second.loginUser(loginUsername, loginPassword);
+            boolean loginSuccess = second.loginUser(loginUsername, loginPassword , second.storedUsername , second.pass);
             System.out.println(second.returnLoginStatus(loginSuccess));
-            if (loginSuccess) {
-        loginSuccess = true;
-        JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
-         // creating a menu using switch and cases and it must show only when the user ha loggin successfully
-        while (true) {
-            String[] options = {"Add tasks\n", "Show report\n", "Quit\n", "Display Done task\n", "Longest Task\n", "Search developer\n","Search Task Name\n", "Delete Tasks\n"};
-            int choice = JOptionPane.showOptionDialog(null, "Please choose an option:", "EasyKanban Menu",
-                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                    null, options, options[0]);
             
-            switch (choice) {
-                case 0 :
-                    task.addTasks();
-                    break;
-                case 1 :
-                   
-                  task.displayAllTasks();
-                    break;
-                case 2 :
-                    JOptionPane.showMessageDialog(null, "Exiting EasyKanban. Goodbye!");
-                    return;
-                case 3:
-                    task.displayDoneTask();
-                    break;
-                case 4:
-                    task.displayLongestTask();
-                    break;
-                case 5:
-                   String devName= JOptionPane.showInputDialog("Enter developer name to search:");
-                    task.searchByDeveloper(devName);
-                    break;
-                case 6:
-                   String inputname=  JOptionPane.showInputDialog("Enter task name to search:");
-                    task.searchByTaskName(inputname);
-                    break;
-                case 7:
-                    String taskDel=JOptionPane.showInputDialog("Enter task name to delete:");
-                    task.deleteTask(taskDel);
-                    break;
-                default:
-                    return;
-                    
-            }
-        dialog.dispose();
-        }
+             if(loginSuccess) {
+        JOptionPane.showMessageDialog(null, "Login failed. Please try again.");
         
-    } else {
-        loginSuccess= false;
-       JOptionPane.showMessageDialog(null, "Login failed. Please try again.");
        
     }
+        
+             else {
+                //loginSuccess = true;
+                JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
+                // creating a menu using switch and cases and it must show only when the user ha loggin successfully
+                while (true) {
+                    String[] options = {"Add tasks\n", "Show report\n", "Quit\n", "Display Done task\n", "Longest Task\n", "Search developer\n","Search Task Name\n", "Delete Tasks\n"};
+                    int choice = JOptionPane.showOptionDialog(null, "Please choose an option:", "EasyKanban Menu",
+                            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                            null, options, options[0]);
+                    
+                    switch (choice) {
+                        case 0 :
+                            task.addTasks();
+                            break;
+                        case 1 :
+                            
+                            task.displayAllTasks(Tasks.developerDetails, Tasks.taskName, 
+                                Tasks.taskStatus, Tasks.taskID, Tasks.taskDuration);
+                            break;
+                        case 2 :
+                            JOptionPane.showMessageDialog(null, "Exiting EasyKanban. Goodbye!");
+                            return;
+                        case 3:
+                            
+                            task.displayDoneTask(Tasks.developerDetails, Tasks.taskName, 
+                                Tasks.taskDuration, Tasks.taskStatus);
+                            break;
+                        case 4:
+                            task.displayLongestTask(Tasks.taskDuration, Tasks.developerDetails);
+                            break;
+                        case 5:
+                            String devName= JOptionPane.showInputDialog("Enter developer name to search:");
+                            task.searchByDeveloper(devName, Tasks.developerDetails, Tasks.taskName, 
+                                Tasks.taskStatus);
+                            break;
+                        case 6:
+                            String inputname=  JOptionPane.showInputDialog("Enter task name to search:");
+                            task.searchByTaskName(inputname, Tasks.developerDetails, Tasks.taskName, 
+                                Tasks.taskStatus);
+                            break;
+                        case 7:
+                            String taskDel=JOptionPane.showInputDialog("Enter task name to delete:");
+                            task.deleteTask(taskDel, Tasks.developerDetails, Tasks.taskName, 
+                                Tasks.taskStatus, Tasks.taskID, Tasks.taskDuration);
+                            break;
+                        default:
+                            return;
+                            
+                    }
+                    dialog.dispose();
+                }
+                
+            }
        }
 
         
@@ -123,10 +132,15 @@ public class PoePart1 {
         
         
     }
+}
+
+
+
+
     
     
    
-    }
+    
     
         
     

@@ -13,12 +13,12 @@ import java.util.ArrayList;
  */
 class Tasks {
   
-    private static ArrayList<String> taskName = new ArrayList<>();
-    private static ArrayList<String> taskID = new ArrayList<>();
-    private static ArrayList<String> taskDescription = new ArrayList<>();
-    private static ArrayList<String> developerDetails = new ArrayList<>();
-    private static ArrayList<Integer> taskDuration = new ArrayList<>();
-    private static ArrayList<String> taskStatus = new ArrayList<>();
+     static ArrayList<String> taskName = new ArrayList<>();
+     static ArrayList<String> taskID = new ArrayList<>();
+    static ArrayList<String> taskDescription = new ArrayList<>();
+    static ArrayList<String> developerDetails = new ArrayList<>();
+     static ArrayList<Integer> taskDuration = new ArrayList<>();
+     static ArrayList<String> taskStatus = new ArrayList<>();
     private static final String[] choices = {"To Do", "Done", "Doing"};
     
     
@@ -122,7 +122,7 @@ public boolean checkTaskDescription( String taskDescription){
         
        
 }
-    public void displayDoneTask() {
+    public void displayDoneTask(ArrayList<String> developerDetails ,ArrayList<String> taskName ,ArrayList<Integer> taskDuration , ArrayList<String> taskStatus) {
         StringBuilder output = new StringBuilder("Completed Tasks:\n\n");
         for (int i = 0; i < taskStatus.size(); i++) {
             if (taskStatus.get(i).equalsIgnoreCase("Done")) {
@@ -134,7 +134,7 @@ public boolean checkTaskDescription( String taskDescription){
         }
         JOptionPane.showMessageDialog(null, output.toString());
     }
-    public void displayLongestTask() {
+    public void displayLongestTask(ArrayList<Integer> taskDuration ,ArrayList<String> developerDetails) {
         int maxDuration = 0;
         int maxIndex = 0;
         
@@ -151,7 +151,7 @@ public boolean checkTaskDescription( String taskDescription){
         JOptionPane.showMessageDialog(null, output);
         
     }
-    public void searchByTaskName(String searchName) {
+    public void searchByTaskName(String searchName,ArrayList<String> developerDetails,ArrayList<String> taskName,ArrayList<String> taskStatus ) {
         for (int i = 0; i < taskName.size(); i++) {
             if (taskName.get(i).equalsIgnoreCase(searchName)) {
                 String output = "Task Found:\n" +
@@ -164,7 +164,7 @@ public boolean checkTaskDescription( String taskDescription){
         }
           JOptionPane.showMessageDialog(null, "Task not found!");
     }
-     public  void searchByDeveloper(String searchDev) {
+     public  void searchByDeveloper(String searchDev,ArrayList<String> developerDetails,ArrayList<String> taskName,ArrayList<String> taskStatus ) {
         StringBuilder output = new StringBuilder("Tasks for developer " + searchDev + ":\n\n");
         boolean found = false;
         
@@ -184,7 +184,7 @@ public boolean checkTaskDescription( String taskDescription){
         }
     }
      
-     public void displayAllTasks() {
+     public void displayAllTasks(ArrayList<String> developerDetails, ArrayList<String> taskName, ArrayList<String> taskStatus, ArrayList<String> taskID, ArrayList<Integer> taskDuration) {
         StringBuilder report = new StringBuilder("Full Task Report:\n\n");
         
         for (int i = 0; i < taskName.size(); i++) {
@@ -198,7 +198,7 @@ public boolean checkTaskDescription( String taskDescription){
         
         JOptionPane.showMessageDialog(null, report.toString());
     }
-     public  void deleteTask(String taskNameToDelete) {
+     public  void deleteTask(String taskNameToDelete,ArrayList<String> developerDetails,ArrayList<String> taskName,ArrayList<String> taskStatus,ArrayList<String> taskID,ArrayList<Integer> taskDuration  ) {
     
     for (int i = 0; i < taskName.size(); i++) {
         
