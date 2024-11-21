@@ -80,7 +80,7 @@ public class PoePart1 {
                     switch (choice) {
                         case 0 :
                             task.addTasks();//calling my external method add tasks
-                            break;
+                            break; 
                         case 1 :
                             
                             task.displayAllTasks(Tasks.developerDetails, Tasks.taskName, 

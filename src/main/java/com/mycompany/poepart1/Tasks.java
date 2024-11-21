@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author RC_Student_lab
  */
-class Tasks {
+public class Tasks {
   
      static ArrayList<String> taskName = new ArrayList<>();
      static ArrayList<String> taskID = new ArrayList<>();
@@ -128,7 +128,7 @@ public boolean checkTaskDescription( String taskDescription){
         
        
 }
-    public void displayDoneTask(ArrayList<String> developerDetails ,ArrayList<String> taskName ,ArrayList<Integer> taskDuration , ArrayList<String> taskStatus) {
+    public String displayDoneTask(ArrayList<String> developerDetails ,ArrayList<String> taskName ,ArrayList<Integer> taskDuration , ArrayList<String> taskStatus) {
         StringBuilder output = new StringBuilder("Completed Tasks:\n\n");
         for (int i = 0; i < taskStatus.size(); i++) {
             if (taskStatus.get(i).equalsIgnoreCase("Done")) {
@@ -138,7 +138,8 @@ public boolean checkTaskDescription( String taskDescription){
                       .append(" hours\n\n");
             }
         }
-        JOptionPane.showMessageDialog(null, output.toString());
+      JOptionPane.showMessageDialog(null, output.toString());
+        return null;
     }
     public void displayLongestTask(ArrayList<Integer> taskDuration ,ArrayList<String> developerDetails) {
         int maxDuration = 0;
@@ -224,5 +225,10 @@ public boolean checkTaskDescription( String taskDescription){
     
     // If no task was found that matches the given task name
     JOptionPane.showMessageDialog(null, "Task not found!");
+    
 }
+
+    int returnTaskDuration() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
