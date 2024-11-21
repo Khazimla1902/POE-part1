@@ -48,10 +48,10 @@ public class PoePart1 {
         second.lastName = scanner.nextLine();
 
         // register the user
-        String registrationResult = second.registerUser(second.Username, second.pass);
+        String registrationResult = second.registerUser(second.Username,second.pass ,second.firstName ,second.lastName);
         System.out.println(registrationResult);
 
-        // If registration is successful, attempt to login
+        // If registration is successful, the user must login
         if (registrationResult.equals("Username and password successfully registered")) {
             System.out.print("Enter username to login: ");
             String loginUsername = scanner.nextLine();
@@ -59,28 +59,27 @@ public class PoePart1 {
             System.out.print("Enter password to login: ");
             String loginPassword = scanner.nextLine();
 
-            boolean loginSuccess = second.loginUser(loginUsername, loginPassword , second.storedUsername , second.pass);
+            boolean loginSuccess = second.loginUser(loginUsername, loginPassword);
             System.out.println(second.returnLoginStatus(loginSuccess));
             
-             if(loginSuccess) {
+             if(!loginSuccess) {
         JOptionPane.showMessageDialog(null, "Login failed. Please try again.");
         
        
     }
         
              else {
-                //loginSuccess = true;
                 JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
-                // creating a menu using switch and cases and it must show only when the user ha loggin successfully
+                // creating a menu using switch and cases and it must show only when the user the loggin successfully
                 while (true) {
                     String[] options = {"Add tasks\n", "Show report\n", "Quit\n", "Display Done task\n", "Longest Task\n", "Search developer\n","Search Task Name\n", "Delete Tasks\n"};
                     int choice = JOptionPane.showOptionDialog(null, "Please choose an option:", "EasyKanban Menu",
                             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                            null, options, options[0]);
-                    
+                            null, options, options[0]);//The menu
+                    //cases and what each case contain
                     switch (choice) {
                         case 0 :
-                            task.addTasks();
+                            task.addTasks();//calling my external method add tasks
                             break;
                         case 1 :
                             
